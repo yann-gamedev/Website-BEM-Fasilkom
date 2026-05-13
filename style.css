@@ -1,0 +1,193 @@
+/* ===== BEM Fasilkom - Main Stylesheet ===== */
+
+/* --- CSS Variables --- */
+:root {
+    --primary-orange: #f97316;
+    --primary-dark: #ea580c;
+    --bg-light: #f9fafb;
+    --text-dark: #111827;
+    --text-body: #4b5563;
+    --text-muted: #6b7280;
+    --border-light: #e5e7eb;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-hover: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.1);
+}
+
+/* --- Base --- */
+html { scroll-behavior: smooth; }
+
+/* --- Navigation --- */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--primary-orange);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after { width: 100%; }
+
+/* --- Card Hover Effect --- */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-orange);
+}
+
+/* --- Fade-In Animation --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Tab System --- */
+.tab-btn.active {
+    background-color: var(--primary-orange);
+    color: white;
+}
+
+.tab-btn:not(.active) {
+    background-color: transparent;
+    color: var(--text-body);
+    border: 1px solid var(--border-light);
+}
+
+.tab-content { display: none; }
+.tab-content.active {
+    display: block;
+    animation: fadeInTab 0.4s ease-in-out;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Profile Page Styles --- */
+.profile-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.profile-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-orange);
+    box-shadow: 0 0 30px rgba(249,115,22,0.25);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+}
+
+.profile-stat {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.profile-stat:hover {
+    border-color: var(--primary-orange);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.profile-stat .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-orange);
+    line-height: 1;
+}
+
+.profile-stat .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    border-left: 2px solid var(--border-light);
+}
+
+.timeline-item:last-child {
+    border-left-color: transparent;
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary-orange);
+    border: 2px solid white;
+    box-shadow: 0 0 0 3px rgba(249,115,22,0.2);
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-orange {
+    background: #fff7ed;
+    color: var(--primary-orange);
+}
+
+.badge-blue {
+    background: #eff6ff;
+    color: #3b82f6;
+}
+
+.badge-green {
+    background: #f0fdf4;
+    color: #22c55e;
+}

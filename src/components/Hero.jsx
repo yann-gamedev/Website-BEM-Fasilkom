@@ -71,8 +71,8 @@ export default function Hero() {
             </div>
             
             <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-              Kabinet<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-400">Aetherion</span>
+              BEM FASILKOM<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-400">KABINET AETHERION</span>
             </h2>
             
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">

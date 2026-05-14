@@ -14,7 +14,7 @@ export default function Cabinet() {
   const ministries = [
     {
       id: 1,
-      title: 'Pengembangan Sumber Daya Mahasiswa (PSDM)', // Typo "Pengembaangan" telah diperbaiki
+      title: 'Pengembangan Sumber Daya Mahasiswa (PSDM)', 
       desc: 'Fokus pada kaderisasi dan peningkatan kapasitas internal pengurus dan mahasiswa.',
       icon: <UsersThree size={32} />,
       color: 'blue',
@@ -42,7 +42,7 @@ export default function Cabinet() {
       desc: 'Menjalin relasi dengan alumni, instansi luar, dan BEM fakultas/universitas lain.',
       icon: <Handshake size={32} />,
       color: 'brand',
-      bidang: ['Bidang Relasi Eksternal', 'Bidang Kemitraan & Sponsorship']
+      bidang: ['Bidang Dalam Negeri', 'Bidang Luar Negeri']
     }
   ];
 

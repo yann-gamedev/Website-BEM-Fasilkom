@@ -73,7 +73,7 @@ export default function Footer() {
             &copy; 2026 BEM Fasilkom UPN "Veteran" Jatim. Hak cipta dilindungi.
           </p>
           <p className="text-gray-500 text-xs">
-            Didesain ulang dengan ❤️ menggunakan React & Framer Motion
+            Didesain ulang dengan menggunakan React & Framer Motion
           </p>
         </div>
       </div>

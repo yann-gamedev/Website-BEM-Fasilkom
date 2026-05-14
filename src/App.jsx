@@ -4,17 +4,17 @@ import About from './components/About';
 import Cabinet from './components/Cabinet';
 import Program from './components/Program';
 import Footer from './components/Footer';
+import MapSection from './components/MapSection';
 
 function App() {
   return (
     <div className="font-sans text-gray-800 bg-slate-50 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Cabinet />
-        <Program />
-      </main>
+      <Hero />
+      <About />
+      <Cabinet />
+      <Program />
+      <MapSection />
       <Footer />
     </div>
   );

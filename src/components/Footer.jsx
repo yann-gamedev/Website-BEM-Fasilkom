@@ -1,4 +1,4 @@
-import { InstagramLogo, TwitterLogo, YoutubeLogo, EnvelopeSimple, MapPin } from '@phosphor-icons/react';
+import { InstagramLogo, YoutubeLogo, EnvelopeSimple, MapPin } from '@phosphor-icons/react';
 
 export default function Footer() {
   return (
@@ -18,10 +18,15 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mb-6 pr-4">
               Badan Eksekutif Mahasiswa Fakultas Ilmu Komputer UPN "Veteran" Jawa Timur. Organisasi kemahasiswaan tingkat fakultas yang menjadi wadah pergerakan dan aspirasi mahasiswa.
             </p>
+            
             <div className="flex gap-4">
-              {[InstagramLogo, TwitterLogo, YoutubeLogo, EnvelopeSimple].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors">
-                  <Icon weight="fill" size={20} />
+              {[
+                { icon: YoutubeLogo, href: "https://www.youtube.com/@FASILKOMUPNVJATIM" },
+                { icon: InstagramLogo, href: "https://www.instagram.com/bemfasilkom.upnjatim/" },
+                { icon: EnvelopeSimple, href: "mailto:bemfasilkom@upnjatim.ac.id" }
+              ].map((social, y) => (
+                <a key={y} href={social.href} className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors">
+                  <social.icon weight="fill" size={20} />
                 </a>
               ))}
             </div>

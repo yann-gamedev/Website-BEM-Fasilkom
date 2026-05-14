@@ -42,23 +42,22 @@ export default function About() {
           {/* Bagian Foto dengan Animasi Flip */}
           <div className="order-1 md:order-2" style={{ perspective: "1000px" }}>
             <motion.div
-              className="relative w-full aspect-[4/3] cursor-pointer"
+              className="relative w-full cursor-pointer"
               style={{ transformStyle: "preserve-3d" }}
               animate={{ rotateY: isFlipped ? 180 : 0 }}
               transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
               onClick={() => setIsFlipped(!isFlipped)}
             >
               {/* Sisi Depan: Gambar */}
-              <div 
-                className="absolute inset-0 w-full h-full" 
+              <div  
                 style={{ backfaceVisibility: "hidden" }}
               >
-                <img src="/assets/aetherion.jpg" alt="Logo Kabinet" className="w-full h-full object-cover rounded-2xl shadow-lg hover:shadow-xl transition-shadow" />
+                <img src="/assets/aetherion.jpg" alt="Logo Kabinet" className="w-full h-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow" />
               </div>
               
               {/* Sisi Belakang: Informasi BPH */}
               <div 
-                className="absolute inset-0 w-full h-full bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col justify-center items-center"
+                className="absolute inset-0 w-full h-full bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col justify-center items-center overflow-auto"
                 style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
               >
                 <h4 className="text-xl font-bold text-brand-600 mb-4 border-b-2 border-brand-100 pb-2 w-full text-center">Badan Pengurus Harian</h4>

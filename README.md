@@ -1,16 +1,66 @@
-# React + Vite
+# BEM Fasilkom UPN "Veteran" Jawa Timur
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Official web application for the Student Executive Board (BEM) of the Faculty of Computer Science at UPN "Veteran" Jawa Timur. This platform serves as a central hub for student information, organizational structure, program documentation, and student advocacy.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project was built to deliver a high-performance, accessible, and modern user interface. It features dynamic routing, animated components, and a fully responsive design tailored for both mobile and desktop users.
 
-## React Compiler
+## Technology Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: React 19
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS v4
+- **Animation**: Framer Motion
+- **Icons**: Phosphor Icons
 
-## Expanding the ESLint configuration
+## Local Development Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To run this project locally, ensure you have Node.js installed on your machine.
+
+1. Clone the repository
+```bash
+git clone https://github.com/yann-gamedev/Website-BEM-Fasilkom.git
+```
+
+2. Navigate into the project directory
+```bash
+cd Website-BEM-Fasilkom
+```
+
+3. Install all dependencies
+```bash
+npm install
+```
+
+4. Start the development server
+```bash
+npm run dev
+```
+
+5. Open your browser and navigate to the local server address provided in the terminal (usually `http://localhost:5173`).
+
+## Project Structure
+
+- `src/` : Contains the main source code for the React application.
+  - `components/` : Reusable UI components (Navbar, Hero, About, Cabinet, Program, Footer).
+  - `index.css` : Global stylesheet including Tailwind directives and custom design variables.
+  - `App.jsx` : Main application layout and component assembly.
+  - `main.jsx` : React DOM mounting point.
+- `public/` : Static assets like images and fonts.
+- `backup/vanilla/` : Contains the legacy HTML/CSS/JS implementation for reference purposes.
+
+## Deployment
+
+This application is optimized for deployment on modern platforms such as Vercel, Netlify, or GitHub Pages.
+
+To create a production build, run:
+```bash
+npm run build
+```
+
+This will generate a `dist/` directory containing the optimized, minified files ready for hosting.
+
+## License
+
+Copyright 2026 BEM Fasilkom UPN "Veteran" Jatim. All rights reserved.

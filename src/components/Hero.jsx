@@ -4,9 +4,9 @@ import { PlayCircle, Users } from '@phosphor-icons/react';
 
 const IMAGES = [
   '/assets/gedungbem.jpg',
-  '/assets/bem.png',
+  '/assets/girisantika.jpg',
   '/assets/fasilkom.png',
-  'https://placehold.co/600x600/c2410c/ffffff?text=BEM+Kegiatan+3'
+  '/assets/program1.jpeg'
 ];
 
 export default function Hero() {
@@ -71,8 +71,8 @@ export default function Hero() {
             </div>
             
             <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-              Sinergi Nyata,<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-400">Untuk Fasilkom Jaya.</span>
+              Kabinet<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-400">Aetherion</span>
             </h2>
             
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">

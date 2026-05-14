@@ -25,14 +25,14 @@ export default function Navbar() {
 
   const logos = [
     { src: '/assets/upn.png', alt: 'Logo UPN', text: 'UPN "VETERAN" JATIM', color: 'text-brand-600' },
-    { src: '/assets/bem.png', alt: 'Logo BEM', text: 'KABINET SINERGI', color: 'text-blue-600' }
+    { src: '/assets/bem.png', alt: 'Logo BEM', text: 'KABINET AETHERION', color: 'text-blue-600' }
   ];
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'shadow-md bg-white/90 py-2 glass-nav' : 'bg-white/30 py-4 glass-nav'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          
+
           {/* Logo with Animation */}
           <div className="flex items-center gap-3 relative h-12 w-64 overflow-hidden">
             <AnimatePresence mode="popLayout">
@@ -63,7 +63,7 @@ export default function Navbar() {
 
           {/* CTA Button Desktop */}
           <div className="hidden md:block">
-            <a href="#kontak" className="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-xl hover:shadow-brand-500/20 hover:-translate-y-0.5 inline-flex items-center gap-2">
+            <a href="https://bemfasilkomupnvjt.carrd.co/" className="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-xl hover:shadow-brand-500/20 hover:-translate-y-0.5 inline-flex items-center gap-2">
               Hubungi Kami <ArrowRight weight="bold" />
             </a>
           </div>
@@ -80,7 +80,7 @@ export default function Navbar() {
       {/* Mobile Menu Panel */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

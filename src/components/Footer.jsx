@@ -5,11 +5,11 @@ export default function Footer() {
     <footer id="kontak" className="bg-gray-900 pt-16 pb-8 border-t-4 border-brand-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
-          
+
           {/* Brand Info */}
           <div className="md:col-span-5">
             <div className="flex items-center gap-3 mb-6">
-              <img src="/assets/upn.png" alt="Logo UPN Veteran Jatim" className="w-10 h-10 object-contain drop-shadow-md" />
+              <img src="/assets/bem.png" alt="Logo UPN Veteran Jatim" className="w-10 h-10 object-contain drop-shadow-md" />
               <div>
                 <h2 className="text-xl font-bold text-white">BEM FASILKOM</h2>
                 <p className="text-xs text-brand-400 tracking-wider">UPN "VETERAN" JATIM</p>
@@ -60,7 +60,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          
+
         </div>
 
         <div className="pt-8 border-t border-gray-800 text-center md:flex md:justify-between md:text-left">

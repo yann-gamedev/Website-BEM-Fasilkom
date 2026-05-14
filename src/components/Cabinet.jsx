@@ -84,7 +84,7 @@ export default function Cabinet() {
           className="text-center mt-12"
         >
           <a href="#" className="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-700 transition-colors">
-            Lihat Seluruh Kementerian <ArrowRight weight="bold" />
+            Lihat Seluruh Departemen <ArrowRight weight="bold" />
           </a>
         </motion.div>
       </div>

@@ -1,344 +1,447 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEM Fakulttas Ilmu Komputer</title>
+    <title>BEM Fasilkom UPN "Veteran" Jatim</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for modern sleek icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316', // Primary Orange
+                            600: '#ea580c', // Darker Orange
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-white text-gray-800 font-sans antialiased">
+<body class="font-sans text-gray-800 bg-slate-50 antialiased overflow-x-hidden">
 
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-100 transition-all duration-300" id="navbar">
+    <!-- Navbar -->
+    <header id="navbar" class="fixed w-full z-50 glass-nav transition-all duration-300 py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-orange-500/30">
-                        F
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <img src="/assets/bem.png" alt="Logo UPN Veteran Jatim" class="w-10 h-10 object-contain drop-shadow-md">
+                    <div>
+                        <h1 class="text-xl font-extrabold text-gray-900 leading-none">BEM FASILKOM</h1>
+                        <p class="text-xs text-brand-600 font-semibold tracking-wider">UPN "VETERAN" JATIM</p>
                     </div>
-                    <span class="font-bold text-xl tracking-tight text-gray-900">BEM <span class="text-orange-500">Fasilkom</span></span>
-                </div>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#beranda" class="nav-link text-gray-600 font-medium hover:text-orange-500">Beranda</a>
-                    <a href="#tentang" class="nav-link text-gray-600 font-medium hover:text-orange-500">Tentang</a>
-                    <a href="#struktur" class="nav-link text-gray-600 font-medium hover:text-orange-500">Struktur</a>
-                    <a href="#proker" class="nav-link text-gray-600 font-medium hover:text-orange-500">Program Kerja</a>
-                    <a href="profile.html" class="nav-link text-gray-600 font-medium hover:text-orange-500">Profil</a>
                 </div>
 
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#beranda" class="text-gray-600 hover:text-brand-500 font-medium transition-colors nav-link">Beranda</a>
+                    <a href="#tentang" class="text-gray-600 hover:text-brand-500 font-medium transition-colors nav-link">Tentang Kami</a>
+                    <a href="#kabinet" class="text-gray-600 hover:text-brand-500 font-medium transition-colors nav-link">Kabinet</a>
+                    <a href="#program" class="text-gray-600 hover:text-brand-500 font-medium transition-colors nav-link">Program</a>
+                </nav>
+
+                <!-- CTA Button Desktop -->
+                <div class="hidden md:block">
+                    <a href="#kontak" class="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-xl hover:shadow-brand-500/20 hover:-translate-y-0.5 inline-flex items-center gap-2">
+                        Hubungi Kami <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-orange-500 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-500 focus:outline-none p-2">
+                        <i class="ph ph-list text-3xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#beranda" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-500 hover:bg-orange-50">Beranda</a>
-                <a href="#tentang" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-500 hover:bg-orange-50">Tentang</a>
-                <a href="#struktur" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-500 hover:bg-orange-50">Struktur</a>
-                <a href="#proker" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-500 hover:bg-orange-50">Program Kerja</a>
-                <a href="profile.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-500 hover:bg-orange-50">Profil</a>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 absolute w-full top-full left-0 shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#beranda" class="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Beranda</a>
+                <a href="#tentang" class="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Tentang Kami</a>
+                <a href="#kabinet" class="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Kabinet</a>
+                <a href="#program" class="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Program</a>
+                <a href="#kontak" class="block px-3 py-3 mt-4 text-center text-base font-medium bg-brand-500 text-white rounded-lg shadow-md">Hubungi Kami</a>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <section id="beranda" class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden relative">
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-orange-100 blur-3xl opacity-50 z-0"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-orange-50 blur-3xl opacity-50 z-0"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-in">
-            <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-6 tracking-wide uppercase">
-                Badan Eksekutif Mahasiswa
-            </span>
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-8">
-                Sinergi <span class="text-orange-500">Fasilkom</span><br>Untuk Masa Depan
-            </h1>
-            <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto mb-10">
-                Wadah aspirasi dan kreasi mahasiswa Fakultas Ilmu Komputer. Bersama membangun budaya teknologi yang inklusif dan inovatif.
-            </p>
-            <div class="flex justify-center gap-4">
-                <a href="#proker" class="px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/30 transition-all">
-                    Lihat Program
-                </a>
-                <a href="#tentang" class="px-8 py-4 border-2 border-gray-200 text-base font-medium rounded-xl text-gray-700 bg-white hover:border-orange-500 hover:text-orange-500 transition-all">
-                    Kenali Kami
-                </a>
+    <!-- Hero Section -->
+    <section id="beranda" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-white z-0"></div>
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-brand-400/10 rounded-full blur-3xl z-0 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-[400px] h-[400px] bg-blue-400/10 rounded-full blur-3xl z-0 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left fade-in delay-100">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 text-brand-600 font-semibold text-sm mb-6">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                        </span>
+                        Selamat Datang di Website Resmi
+                    </div>
+                    <h2 class="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Sinergi Nyata,<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-400">Untuk Fasilkom Jaya.</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Badan Eksekutif Mahasiswa Fakultas Ilmu Komputer UPN "Veteran" Jawa Timur hadir sebagai wadah aspirasi, kreasi, dan kolaborasi untuk seluruh mahasiswa.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#tentang" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-3.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-brand-500/30 hover:-translate-y-1 text-center">
+                            Kenali Lebih Lanjut
+                        </a>
+                        <a href="#program" class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-200 px-8 py-3.5 rounded-full font-semibold transition-all hover:shadow-md text-center flex items-center justify-center gap-2">
+                            <i class="ph ph-play-circle text-xl text-brand-500"></i> Program Kerja
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic - Photo Carousel -->
+                <div class="relative w-full aspect-square max-w-lg mx-auto fade-in delay-300">
+                    <!-- Decorative background for image -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-100 to-brand-300 rounded-[2rem] rotate-3 scale-105 opacity-50 z-0"></div>
+
+                    <!-- Carousel Container -->
+                    <div class="carousel-container absolute inset-0 z-10 shadow-2xl border-4 border-white">
+                        <!-- Carousel Track -->
+                        <div class="carousel-track" id="carouselTrack">
+                            <!-- Slide 1 -->
+                            <div class="carousel-slide active">
+                                <img src="/assets/gedungbem.jpg" alt="BEM Fasilkom - Gedung" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="carousel-slide">
+                                <img src="/assets/fasilkom.png" alt="BEM Fasilkom - Kegiatan 1" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="carousel-slide">
+                                <img src="https://placehold.co/600x600/c2410c/ffffff?text=BEM+Kegiatan+3" alt="BEM Fasilkom - Kegiatan 2" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Slide 4 -->
+                            <div class="carousel-slide">
+                                <img src="https://placehold.co/600x600/c2410c/ffffff?text=BEM+Kegiatan+4" alt="BEM Fasilkom - Kegiatan 4" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <button class="carousel-nav-button prev" id="carouselPrev" aria-label="Previous photo">
+                            <i class="ph ph-caret-left"></i>
+                        </button>
+                        <button class="carousel-nav-button next" id="carouselNext" aria-label="Next photo">
+                            <i class="ph ph-caret-right"></i>
+                        </button>
+
+                        <!-- Dot Controls -->
+                        <div class="carousel-controls">
+                            <div class="carousel-dot active" data-slide="0"></div>
+                            <div class="carousel-dot" data-slide="1"></div>
+                            <div class="carousel-dot" data-slide="2"></div>
+                            <div class="carousel-dot" data-slide="3"></div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl z-20 flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                            <i class="ph ph-users text-2xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-medium">Total Mahasiswa</p>
+                            <p class="text-xl font-bold text-gray-900">2,000+</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="tentang" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Tentang BEM Fasilkom</h2>
-                <div class="mt-2 w-24 h-1 bg-orange-500 mx-auto rounded-full"></div>
+    <!-- Tentang & Visi Misi Section -->
+    <section id="tentang" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <h3 class="text-brand-500 font-bold tracking-wider uppercase text-sm mb-2">Tentang Kami</h3>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Mengenal Lebih Dekat BEM Fasilkom</h2>
+                <div class="w-24 h-1.5 bg-brand-500 mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
-                    <div class="w-12 h-12 bg-orange-100 text-orange-500 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Visi</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Mewujudkan BEM Fasilkom sebagai katalisator pergerakan mahasiswa yang adaptif, kolaboratif, dan berdampak nyata bagi fakultas, universitas, dan masyarakat dalam bidang teknologi informasi.
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20 fade-in delay-200">
+                <div class="order-2 md:order-1">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <i class="ph-fill ph-target text-brand-500 text-3xl"></i> Visi
+                    </h4>
+                    <p class="text-gray-600 text-lg leading-relaxed bg-brand-50 p-6 rounded-2xl border-l-4 border-brand-500">
+                        "Mewujudkan BEM Fasilkom UPN Jatim sebagai poros pergerakan mahasiswa yang adaptif, inovatif, dan sinergis dalam menciptakan lingkungan kampus yang prestatif dan inklusif."
                     </p>
                 </div>
-                
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Misi</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center text-sm font-bold mt-1 mr-4">1</span>
-                            <p class="text-gray-600">Membangun internal organisasi yang solid dan profesional berlandaskan kekeluargaan.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center text-sm font-bold mt-1 mr-4">2</span>
-                            <p class="text-gray-600">Mengoptimalkan pelayanan advokasi dan kesejahteraan mahasiswa Fasilkom.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center text-sm font-bold mt-1 mr-4">3</span>
-                            <p class="text-gray-600">Mewadahi dan mengembangkan potensi akademik serta non-akademik mahasiswa.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center text-sm font-bold mt-1 mr-4">4</span>
-                            <p class="text-gray-600">Menjalin sinergi berkelanjutan dengan Hima, civitas akademika, dan pihak eksternal.</p>
-                        </li>
-                    </ul>
+                <div class="order-1 md:order-2">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Logo+Kabinet+BEM" alt="Logo Kabinet" class="w-full rounded-2xl shadow-lg">
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-2xl font-bold text-gray-900 mb-8 text-center flex items-center justify-center gap-2">
+                    <i class="ph-fill ph-list-checks text-brand-500 text-3xl"></i> Misi
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Misi Card -->
+                    <div class="bg-white p-8 rounded-2xl border border-gray-100 card-hover fade-in delay-100">
+                        <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                            1
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-3">Optimalisasi Pelayanan</h5>
+                        <p class="text-gray-600 leading-relaxed">
+                            Meningkatkan pelayanan advokasi dan kesejahteraan mahasiswa yang responsif dan solutif.
+                        </p>
+                    </div>
+                    <!-- Misi Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl border border-gray-100 card-hover fade-in delay-200">
+                        <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                            2
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-3">Wadah Eskalasi</h5>
+                        <p class="text-gray-600 leading-relaxed">
+                            Menciptakan ruang pengembangan minat, bakat, dan keilmuan secara komprehensif.
+                        </p>
+                    </div>
+                    <!-- Misi Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl border border-gray-100 card-hover fade-in delay-300">
+                        <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                            3
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-3">Sinergi Harmonis</h5>
+                        <p class="text-gray-600 leading-relaxed">
+                            Membangun hubungan yang harmonis dan kolaboratif antar Ormawa dan elemen Fakultas.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="struktur" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Struktur Organisasi</h2>
-                <div class="mt-2 w-24 h-1 bg-orange-500 mx-auto rounded-full"></div>
-                <p class="mt-4 text-gray-500">Kabinet Aetherion 2026</p>
+    <!-- Struktur Kabinet Section -->
+    <section id="kabinet" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h3 class="text-brand-500 font-bold tracking-wider uppercase text-sm mb-2">Struktur Organisasi</h3>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Departemen Kabinet</h2>
+                <p class="text-gray-600">Terdiri dari berbagai departemen yang berfokus pada ranah kerja spesifik untuk melayani mahasiswa.</p>
             </div>
 
-            <div class="flex flex-col items-center">
-                <div class="bg-white border-2 border-orange-200 rounded-xl p-6 text-center w-64 shadow-md z-10 card-hover">
-                    <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden">
-                        <img src="https://placehold.co/100x100/f97316/ffffff?text=Ketua" alt="Ketua BEM" class="w-full h-full object-cover">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Kementerian Item -->
+                <div class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover fade-in delay-100">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-users-three"></i>
                     </div>
-                    <h4 class="font-bold text-gray-900">Nama</h4>
-                    <p class="text-orange-500 text-sm font-medium">Ketua Umum</p>
-                </div>
-                
-                <div class="w-0.5 h-8 bg-gray-300"></div>
-                
-                <div class="bg-white border border-gray-200 rounded-xl p-6 text-center w-64 shadow-sm z-10 card-hover">
-                    <div class="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-3 overflow-hidden">
-                        <img src="https://placehold.co/100x100/ea580c/ffffff?text=Wakil" alt="Wakil BEM" class="w-full h-full object-cover">
-                    </div>
-                    <h4 class="font-bold text-gray-900">Nama</h4>
-                    <p class="text-orange-500 text-sm font-medium">Wakil Ketua Umum</p>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Pengembangan Sumber Daya Mahasiswa (PSDM)</h4>
+                    <p class="text-gray-500 text-sm">Fokus pada kaderisasi dan peningkatan kapasitas internal pengurus dan mahasiswa.</p>
                 </div>
 
-                <div class="w-0.5 h-8 bg-gray-300"></div>
-                
-                <div class="bg-white border border-gray-200 rounded-xl p-6 text-center w-64 shadow-sm z-10 card-hover">
-                    <div class="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-3 overflow-hidden">
-                        <img src="https://placehold.co/100x100/ea580c/ffffff?text=Wakil" alt="Wakil BEM" class="w-full h-full object-cover">
+                <!-- Kementerian Item -->
+                <div class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover fade-in delay-200">
+                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-scales"></i>
                     </div>
-                    <h4 class="font-bold text-gray-900">Nama</h4>
-                    <p class="text-orange-500 text-sm font-medium">Sekertaris Umum 1</p>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Departemen Sosial dan Politik</h4>
+                    <p class="text-gray-500 text-sm">Melayani keluh kesah, bantuan UKT, dan fasilitas untuk kenyamanan belajar.</p>
                 </div>
 
-                <div class="w-0.5 h-8 bg-gray-300"></div>
-                <div class="w-full max-w-3xl h-0.5 bg-gray-300 relative">
-                    <div class="absolute top-0 left-0 w-0.5 h-8 bg-gray-300"></div>
-                    <div class="absolute top-0 left-1/3 w-0.5 h-8 bg-gray-300"></div>
-                    <div class="absolute top-0 right-1/3 w-0.5 h-8 bg-gray-300"></div>
-                    <div class="absolute top-0 right-0 w-0.5 h-8 bg-gray-300"></div>
+                <!-- Kementerian Item -->
+                <div class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover fade-in delay-300">
+                    <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-megaphone"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Biro Media dan Informasi</h4>
+                    <p class="text-gray-500 text-sm">Ujung tombak media sosial, publikasi, dan pusat informasi Fasilkom.</p>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-8 w-full max-w-4xl">
-                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center card-hover">
-                        <h4 class="font-bold text-gray-800 text-sm mb-1">Biro Media dan Informasi</h4>
-                        <p class="text-gray-500 text-xs">Ketua Biro</p>
-                        <p class="text-gray-500 text-xs">Wakil Ketua Biro</p>
-                        <p class="text-gray-500 text-xs">Sekertaris Biro</p>
+                <!-- Kementerian Item -->
+                <div class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover fade-in delay-300">
+                    <div class="w-16 h-16 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-handshake"></i>
                     </div>
-                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center card-hover">
-                        <h4 class="font-bold text-gray-800 text-sm mb-1">Departemen Sosial dan Politik</h4>
-                        <p class="text-gray-500 text-xs">Ketua Departemen</p>
-                        <p class="text-gray-500 text-xs">Wakil Ketua Departemen</p>
-                        <p class="text-gray-500 text-xs">Sekertaris Departemen</p>
-                    </div>
-                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center card-hover">
-                        <h4 class="font-bold text-gray-800 text-sm mb-1">Departemen Pengembangan Sumber Daya Manusia</h4>
-                        <p class="text-gray-500 text-xs">Ketua Departemen</p>
-                        <p class="text-gray-500 text-xs">Wakil Ketua Departemen</p>
-                        <p class="text-gray-500 text-xs">Sekertaris Departemen</p>
-                    </div>
-                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center card-hover">
-                        <h4 class="font-bold text-gray-800 text-sm mb-1">Departemen Hubungan dan Kerjasama</h4>
-                        <p class="text-gray-500 text-xs">Ketua Departemen</p>
-                        <p class="text-gray-500 text-xs">Wakil Ketua Departemen</p>
-                        <p class="text-gray-500 text-xs">Sekertaris Departemen</p>
-                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Departemen Hubungan dan Kerja Sama</h4>
+                    <p class="text-gray-500 text-sm">Menjalin relasi dengan alumni, instansi luar, dan BEM fakultas/universitas lain.</p>
                 </div>
             </div>
             
-            <div class="mt-20">
-                <h3 class="text-2xl font-bold text-center text-gray-900 mb-10">Himpunan Mahasiswa (Hima)</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm card-hover text-center">
-                        <div class="w-16 h-16 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">IF</div>
-                        <h4 class="font-bold text-gray-900 mb-2">HIMATIF</h4>
-                        <p class="text-sm text-gray-500">Himpunan Mahasiswa Teknik Informatika</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm card-hover text-center">
-                        <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">SI</div>
-                        <h4 class="font-bold text-gray-900 mb-2">HIMASI</h4>
-                        <p class="text-sm text-gray-500">Himpunan Mahasiswa Sistem Informasi</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm card-hover text-center">
-                        <div class="w-16 h-16 bg-purple-100 text-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">DS</div>
-                        <h4 class="font-bold text-gray-900 mb-2">HIMADAS</h4>
-                        <p class="text-sm text-gray-500">Himpunan Mahasiswa Sains Data</p>
-                    </div>
-                </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-700 transition-colors">
+                    Lihat Seluruh Kementerian <i class="ph ph-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="proker" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Program Kerja</h2>
-                <div class="mt-2 w-24 h-1 bg-orange-500 mx-auto rounded-full mb-8"></div>
-                
-                <div class="flex justify-center space-x-2 md:space-x-4">
-                    <button class="tab-btn active px-6 py-2 rounded-full font-medium transition-colors" data-target="tab-bem">BEM Fasilkom</button>
-                    <button class="tab-btn px-6 py-2 rounded-full font-medium transition-colors" data-target="tab-himatif">HIMATIF</button>
-                    <button class="tab-btn px-6 py-2 rounded-full font-medium transition-colors" data-target="tab-himasi">HIMASI</button>
-                </div>
-            </div>
-
-            <div id="tab-bem" class="tab-content active">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 card-hover">
-                        <div class="h-48 bg-gray-200 w-full relative">
-                            <img src="https://placehold.co/600x400/f97316/ffffff?text=Fasilkom+Fest" alt="Proker 1" class="w-full h-full object-cover">
-                            <div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-orange-500">Nasional</div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Fasilkom Festival</h3>
-                            <p class="text-gray-600 text-sm mb-4">Acara tahunan terbesar Fasilkom yang berisi perlombaan IT, seminar nasional, dan exhibition karya mahasiswa.</p>
-                            <span class="text-xs font-semibold text-gray-400">Dept. Akademik & Minbak</span>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 card-hover">
-                        <div class="h-48 bg-gray-200 w-full">
-                            <img src="https://placehold.co/600x400/ea580c/ffffff?text=Advokasi+Center" alt="Proker 2" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Pusat Advokasi</h3>
-                            <p class="text-gray-600 text-sm mb-4">Layanan pendampingan mahasiswa terkait masalah akademik, UKT, dan fasilitas kampus secara transparan.</p>
-                            <span class="text-xs font-semibold text-gray-400">Dept. Adkesma</span>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 card-hover">
-                        <div class="h-48 bg-gray-200 w-full">
-                            <img src="https://placehold.co/600x400/ffedd5/f97316?text=IT+Mengabdi" alt="Proker 3" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">IT Mengabdi</h3>
-                            <p class="text-gray-600 text-sm mb-4">Kegiatan pengabdian masyarakat dengan memberikan pelatihan literasi digital ke sekolah-sekolah.</p>
-                            <span class="text-xs font-semibold text-gray-400">Dept. Sosmas</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="tab-himatif" class="tab-content">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 card-hover">
-                        <div class="p-6">
-                            <div class="w-10 h-10 bg-blue-100 text-blue-500 rounded-lg flex items-center justify-center mb-4">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Hackathon Internal</h3>
-                            <p class="text-gray-600 text-sm">Kompetisi pembuatan aplikasi 24 jam khusus untuk mahasiswa Informatika untuk memecahkan masalah kampus.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 card-hover">
-                        <div class="p-6">
-                            <div class="w-10 h-10 bg-blue-100 text-blue-500 rounded-lg flex items-center justify-center mb-4">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Study Club Programming</h3>
-                            <p class="text-gray-600 text-sm">Kelompok belajar mingguan membahas algoritma, struktur data, dan teknologi web/mobile terbaru.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="tab-himasi" class="tab-content">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 card-hover">
-                        <div class="p-6">
-                            <div class="w-10 h-10 bg-green-100 text-green-500 rounded-lg flex items-center justify-center mb-4">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Business Case Competition</h3>
-                            <p class="text-gray-600 text-sm">Lomba analisis sistem bisnis perusahaan dan memberikan solusi berbasis teknologi informasi.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white py-12">
+    <!-- Program Kerja / Artikel Section -->
+    <section id="program" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 rounded bg-orange-500 flex items-center justify-center font-bold text-white">F</div>
-                        <span class="font-bold text-xl tracking-tight">BEM <span class="text-orange-500">Fasilkom</span></span>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Gedung Fakultas Ilmu Komputer,<br>
-                        Universitas Pembangunan "Veteran" Jawa Timur, Surabaya.<br>
-                        Email: bemfasilkomupn@ac.id
-                    </p>
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div class="max-w-2xl">
+                    <h3 class="text-brand-500 font-bold tracking-wider uppercase text-sm mb-2">Informasi & Kegiatan</h3>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Program Terkini</h2>
                 </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-white">Tautan Cepat</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#beranda" class="hover:text-orange-500 transition-colors">Beranda</a></li>
-                        <li><a href="#tentang" class="hover:text-orange-500 transition-colors">Tentang Kami</a></li>
-                        <li><a href="#struktur" class="hover:text-orange-500 transition-colors">Struktur Organisasi</a></li>
-                        <li><a href="#proker" class="hover:text-orange-500 transition-colors">Program Kerja</a></li>
+                <a href="#" class="inline-flex items-center justify-center px-6 py-2.5 border-2 border-brand-500 text-brand-600 font-medium rounded-full hover:bg-brand-500 hover:text-white transition-all">
+                    Lihat Semua Berita
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Artikel Card 1 -->
+                <div class="group rounded-2xl overflow-hidden border border-gray-100 bg-white flex flex-col h-full card-hover fade-in delay-100">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=Ospek+Fakultas" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full z-20">Event</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <p class="text-xs text-gray-500 mb-2 flex items-center gap-1"><i class="ph ph-calendar-blank"></i> 12 Oktober 2026</p>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-500 transition-colors line-clamp-2">Penyambutan Mahasiswa Baru Fasilkom UPN Jatim</h4>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">Rangkaian acara pengenalan kehidupan kampus bagi mahasiswa baru tahun ajaran ini berlangsung meriah dan edukatif.</p>
+                        <a href="#" class="text-brand-600 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
+                            Baca Selengkapnya <i class="ph ph-caret-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Artikel Card 2 -->
+                <div class="group rounded-2xl overflow-hidden border border-gray-100 bg-white flex flex-col h-full card-hover fade-in delay-200">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=Lomba+IT" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full z-20">Kompetisi</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <p class="text-xs text-gray-500 mb-2 flex items-center gap-1"><i class="ph ph-calendar-blank"></i> 28 September 2026</p>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-500 transition-colors line-clamp-2">Dekan Cup IT Competition Fasilkom</h4>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">Ajang unjuk bakat mahasiswa dalam bidang UI/UX Design, Web Development, dan Competitive Programming.</p>
+                        <a href="#" class="text-brand-600 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
+                            Baca Selengkapnya <i class="ph ph-caret-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Artikel Card 3 -->
+                <div class="group rounded-2xl overflow-hidden border border-gray-100 bg-white flex flex-col h-full card-hover fade-in delay-300">
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=Audiensi" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full z-20">Advokasi</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <p class="text-xs text-gray-500 mb-2 flex items-center gap-1"><i class="ph ph-calendar-blank"></i> 15 September 2026</p>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-500 transition-colors line-clamp-2">Audiensi Terbuka Bersama Dekanat</h4>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">Penyampaian aspirasi mahasiswa terkait fasilitas perkuliahan dan kurikulum secara langsung kepada jajaran dekanat.</p>
+                        <a href="#" class="text-brand-600 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
+                            Baca Selengkapnya <i class="ph ph-caret-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="kontak" class="bg-gray-900 pt-16 pb-8 border-t-4 border-brand-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
+                <!-- Brand Info -->
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="/assets/bem.png" alt="Logo UPN Veteran Jatim" class="w-10 h-10 object-contain drop-shadow-md">
+                        <div>
+                            <h2 class="text-xl font-bold text-white">BEM FASILKOM</h2>
+                            <p class="text-xs text-brand-400 tracking-wider">UPN "VETERAN" JATIM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 pr-4">
+                        Badan Eksekutif Mahasiswa Fakultas Ilmu Komputer UPN "Veteran" Jawa Timur. Organisasi kemahasiswaan tingkat fakultas yang menjadi wadah pergerakan dan aspirasi mahasiswa.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors">
+                            <i class="ph-fill ph-instagram-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors">
+                            <i class="ph-fill ph-twitter-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors">
+                            <i class="ph-fill ph-youtube-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors">
+                            <i class="ph-fill ph-envelope-simple text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tautan Cepat -->
+                <div class="md:col-span-3">
+                    <h4 class="text-white font-semibold mb-6 uppercase tracking-wider text-sm">Tautan Cepat</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#beranda" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Beranda</a></li>
+                        <li><a href="#tentang" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Tentang Kami</a></li>
+                        <li><a href="#kabinet" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Struktur Kabinet</a></li>
+                        <li><a href="#program" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Program & Berita</a></li>
+                        <li><a href="https://fasilkom.upnjatim.ac.id" target="_blank" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Web Fakultas</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-white">Ikuti Kami</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-all">IG</a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-all">X</a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-all">IN</a>
-                    </div>
+
+                <!-- Kontak -->
+                <div class="md:col-span-4">
+                    <h4 class="text-white font-semibold mb-6 uppercase tracking-wider text-sm">Sekretariat</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="ph-fill ph-map-pin text-brand-500 text-xl mt-0.5"></i>
+                            <span class="text-gray-400 text-sm leading-relaxed">
+                                Gedung FIK UPN "Veteran" Jawa Timur<br>
+                                Jl. Raya Rungkut Madya, Gunung Anyar,<br>
+                                Surabaya, Jawa Timur 60294
+                            </span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="ph-fill ph-envelope-simple text-brand-500 text-xl"></i>
+                            <span class="text-gray-400 text-sm">bemfasilkom@upnjatim.ac.id</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
-                &copy; 2026 BEM Fasilkom. All rights reserved.
+
+            <div class="pt-8 border-t border-gray-800 text-center md:flex md:justify-between md:text-left">
+                <p class="text-gray-500 text-xs mb-4 md:mb-0">
+                    &copy; 2026 BEM Fasilkom UPN "Veteran" Jatim. Hak cipta dilindungi.
+                </p>
+                <p class="text-gray-500 text-xs">
+                    Didesain ulang dengan ❤️ untuk Fasilkom
+                </p>
             </div>
         </div>
     </footer>
 
+    <!-- Interactive Scripts -->
     <script src="script.js"></script>
 </body>
 </html>

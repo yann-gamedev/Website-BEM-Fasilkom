@@ -10,28 +10,28 @@ export default function Cabinet() {
   const ministries = [
     {
       id: 1,
-      title: 'Pemberdayaan Sumber Daya Manusia (PSDM)',
+      title: 'Pengembaangan Sumber Daya Mahasiswa (PSDM)',
       desc: 'Fokus pada kaderisasi dan peningkatan kapasitas internal pengurus dan mahasiswa.',
       icon: <UsersThree size={32} />,
       color: 'blue'
     },
     {
       id: 2,
-      title: 'Advokasi dan Kesejahteraan Mahasiswa (Adkesma)',
+      title: 'Departemen Sosial dan Politik (Sospol)',
       desc: 'Melayani keluh kesah, bantuan UKT, dan fasilitas untuk kenyamanan belajar.',
       icon: <Scales size={32} />,
       color: 'green'
     },
     {
       id: 3,
-      title: 'Kementerian Komunikasi dan Informasi (Kominfo)',
+      title: 'Biro Media dan Informasi',
       desc: 'Ujung tombak media sosial, publikasi, dan pusat informasi Fasilkom.',
       icon: <Megaphone size={32} />,
       color: 'purple'
     },
     {
       id: 4,
-      title: 'Kementerian Hubungan Luar (Hublu)',
+      title: 'Departemen Hubungan dan Kerja Sama',
       desc: 'Menjalin relasi dengan alumni, instansi luar, dan BEM fakultas/universitas lain.',
       icon: <Handshake size={32} />,
       color: 'brand'

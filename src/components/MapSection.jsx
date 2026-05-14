@@ -14,7 +14,7 @@ export default function MapSection() {
   const directMapLink = "https://maps.app.goo.gl/QLx7QQKq5wEqJcFc7";
 
   return (
-    <section id="lokasi" className="py-20 bg-white">
+    <section id="lokasi" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <motion.div 
@@ -23,14 +23,14 @@ export default function MapSection() {
           className="text-center mb-12"
         >
           <h3 className="text-brand-500 font-bold tracking-wider uppercase text-sm mb-2">Lokasi Kami</h3>
-          <h2 className="text-3xl font-bold text-gray-900">Kunjungi Sekretariat Kami</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Kunjungi Sekretariat Kami</h2>
         </motion.div>
 
         <motion.div 
           initial="hidden" whileInView="visible" viewport={{ once: true }}
           variants={fadeUp}
           transition={{ delay: 0.2 }}
-          className="relative group bg-white p-4 rounded-3xl shadow-xl border border-gray-100 overflow-hidden"
+          className="relative group bg-white dark:bg-gray-800 p-4 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden"
         >
           {/* Kotak Map */}
           <div className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-inner">
@@ -50,12 +50,12 @@ export default function MapSection() {
           {/* Info Box di bagian bawah */}
           <div className="mt-6 flex flex-col md:flex-row justify-between items-center gap-6 px-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 rounded-2xl flex items-center justify-center flex-shrink-0">
                 <MapPin size={28} weight="fill" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-gray-900">Gedung Fakultas Ilmu Komputer</h4>
-                <p className="text-gray-600 text-sm">Jl. Raya Rungkut Madya No.1, Gn. Anyar, Surabaya, Jawa Timur 60294</p>
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white">Gedung Fakultas Ilmu Komputer</h4>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Jl. Raya Rungkut Madya No.1, Gn. Anyar, Surabaya, Jawa Timur 60294</p>
               </div>
             </div>
 

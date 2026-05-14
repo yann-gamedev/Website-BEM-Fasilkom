@@ -38,7 +38,7 @@ export default function Program() {
   ];
 
   return (
-    <section id="program" className="py-20 bg-white">
+    <section id="program" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <motion.div 
@@ -47,7 +47,7 @@ export default function Program() {
             className="max-w-2xl"
           >
             <h3 className="text-brand-500 font-bold tracking-wider uppercase text-sm mb-2">Informasi & Kegiatan</h3>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Program Terkini</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Program Terkini</h2>
           </motion.div>
           
           <motion.a 
@@ -66,7 +66,7 @@ export default function Program() {
               key={article.id}
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
               variants={fadeUp} transition={{ duration: 0.6, delay: 0.1 * index }}
-              className="group rounded-2xl overflow-hidden border border-gray-100 bg-white flex flex-col h-full card-hover"
+              className="group rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 flex flex-col h-full card-hover"
             >
               <div className="relative h-56 overflow-hidden">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10"></div>
@@ -76,13 +76,13 @@ export default function Program() {
                 </span>
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <p className="text-xs text-gray-500 mb-2 flex items-center gap-1">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 flex items-center gap-1">
                   <CalendarBlank /> {article.date}
                 </p>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-500 transition-colors line-clamp-2">
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors line-clamp-2">
                   {article.title}
                 </h4>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-1">
                   {article.desc}
                 </p>
                 <a href="#" className="text-brand-600 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">

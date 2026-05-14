@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -5,15 +6,28 @@ import Cabinet from './components/Cabinet';
 import Program from './components/Program';
 import Footer from './components/Footer';
 import MapSection from './components/MapSection';
+import Structure from './pages/Structure'; // Import halaman baru
 
 function App() {
+  const [currentView, setCurrentView] = useState('landing'); // 'landing' atau 'structure'
+
   return (
     <div className="font-sans text-gray-800 bg-slate-50 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
-      <Navbar />
-      <Hero />
-      <About />
-      <Cabinet />
-      <Program />
+      <Navbar onNavigate={setCurrentView} />
+
+      <main>
+        {currentView === 'landing' ? (
+          <>
+            <Hero />
+            {/* Berikan fungsi ganti view ke komponen About/Hero */}
+            <About onExplore={() => setCurrentView('structure')} />
+            <Cabinet />
+            <Program />
+          </>
+        ) : (
+          <Structure onBack={() => setCurrentView('landing')} />
+        )}
+      </main>
       <MapSection />
       <Footer />
     </div>

@@ -51,13 +51,13 @@ export default function Cabinet() {
       case 'blue': return 'bg-blue-50 text-blue-600 group-hover:bg-blue-500';
       case 'green': return 'bg-green-50 text-green-600 group-hover:bg-green-500';
       case 'purple': return 'bg-purple-50 text-purple-600 group-hover:bg-purple-500';
-      case 'brand': return 'bg-brand-50 text-brand-600 group-hover:bg-brand-500';
-      default: return 'bg-gray-50 text-gray-600 group-hover:bg-gray-500';
+      case 'brand': return 'bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 group-hover:bg-brand-500 group-hover:text-white';
+      default: return 'bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 group-hover:bg-gray-500 group-hover:text-white';
     }
   };
 
   return (
-    <section id="kabinet" className="py-20 bg-slate-50">
+    <section id="kabinet" className="py-20 bg-slate-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
@@ -65,8 +65,8 @@ export default function Cabinet() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h3 className="text-brand-500 font-bold tracking-wider uppercase text-sm mb-2">Struktur Organisasi</h3>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Departemen Kabinet</h2>
-          <p className="text-gray-600">Terdiri dari berbagai departemen yang berfokus pada ranah kerja spesifik untuk melayani mahasiswa.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Departemen Kabinet</h2>
+          <p className="text-gray-600 dark:text-gray-300">Terdiri dari berbagai departemen yang berfokus pada ranah kerja spesifik untuk melayani mahasiswa.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -75,7 +75,7 @@ export default function Cabinet() {
               key={ministry.id}
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
               variants={fadeUp} transition={{ duration: 0.6, delay: 0.1 * index }}
-              className="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-all"
+              className="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 cursor-pointer hover:shadow-md transition-all"
               onClick={() => setExpandedId(expandedId === ministry.id ? null : ministry.id)}
             >
               <div className="flex justify-between items-start mb-4">
@@ -86,14 +86,14 @@ export default function Cabinet() {
                 <motion.div
                   animate={{ rotate: expandedId === ministry.id ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="text-gray-400 mt-2"
+                  className="text-gray-400 dark:text-gray-500 mt-2"
                 >
                   <CaretDown size={24} />
                 </motion.div>
               </div>
               
-              <h4 className="text-lg font-bold text-gray-900 mb-2">{ministry.title}</h4>
-              <p className="text-gray-500 text-sm">{ministry.desc}</p>
+              <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{ministry.title}</h4>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">{ministry.desc}</p>
 
               {/* Konten Dropdown Bidang */}
               <AnimatePresence>
@@ -104,11 +104,11 @@ export default function Cabinet() {
                     exit={{ height: 0, opacity: 0 }}
                     className="overflow-hidden"
                   >
-                    <div className="mt-4 pt-4 border-t border-gray-100">
-                      <h5 className="font-semibold text-sm text-gray-900 mb-2">Daftar Bidang:</h5>
+                    <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                      <h5 className="font-semibold text-sm text-gray-900 dark:text-gray-200 mb-2">Daftar Bidang:</h5>
                       <ul className="space-y-2">
                         {ministry.bidang.map((b, i) => (
-                          <li key={i} className="text-sm text-gray-600 flex items-center gap-2">
+                          <li key={i} className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
                             <div className="w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0"></div>
                             {b}
                           </li>

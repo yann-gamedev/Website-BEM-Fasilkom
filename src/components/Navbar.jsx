@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { List, X, ArrowRight } from '@phosphor-icons/react';
 
-export default function Navbar() {
+export default function Navbar({ onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [logoChoice, setLogoChoice] = useState(0); // 0 or 1
@@ -56,8 +56,8 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8">
             <a href="#beranda" className="text-gray-600 hover:text-brand-500 font-medium nav-link">Beranda</a>
-            <a href="#tentang" className="text-gray-600 hover:text-brand-500 font-medium nav-link">Tentang Kami</a>
-            <a href="#kabinet" className="text-gray-600 hover:text-brand-500 font-medium nav-link">Kabinet</a>
+            <button onClick={() => onNavigate('structure')} className="text-gray-600 hover:text-brand-500 font-medium nav-link cursor-pointer bg-none border-none">Tentang Kami</button>
+            <button onClick={() => onNavigate('structure')} className="text-gray-600 hover:text-brand-500 font-medium nav-link cursor-pointer bg-none border-none">Kabinet</button>
             <a href="#program" className="text-gray-600 hover:text-brand-500 font-medium nav-link">Program</a>
           </nav>
 
@@ -87,11 +87,10 @@ export default function Navbar() {
             className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 absolute w-full top-full left-0 shadow-xl overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
-              {['Beranda', 'Tentang Kami', 'Kabinet', 'Program'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase().replace(' ', '')}`} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg">
-                  {item}
-                </a>
-              ))}
+              <a href="#beranda" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Beranda</a>
+              <button onClick={() => { onNavigate('structure'); setMobileMenuOpen(false); }} className="w-full text-left block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg bg-none border-none">Tentang Kami</button>
+              <button onClick={() => { onNavigate('structure'); setMobileMenuOpen(false); }} className="w-full text-left block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg bg-none border-none">Kabinet</button>
+              <a href="#program" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Program</a>
               <a href="#kontak" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 mt-4 text-center text-base font-medium bg-brand-500 text-white rounded-lg shadow-md">
                 Hubungi Kami
               </a>

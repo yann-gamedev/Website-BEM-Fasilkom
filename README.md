@@ -1,6 +1,6 @@
 # BEM Fasilkom UPN "Veteran" Jawa Timur
 
-Official web application for the Student Executive Board (BEM) of the Faculty of Computer Science at UPN "Veteran" Jawa Timur. This platform serves as a central hub for student information, organizational structure, program documentation, and student advocacy.
+Official web application for the Student Executive Board (BEM) of the Faculty of Computer Science at UPN "Veteran" Jawa Timur. This platform serves as a central hub for student information, organizational structure, and program documentation.
 
 ## Project Overview
 

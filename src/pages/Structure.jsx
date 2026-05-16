@@ -51,21 +51,29 @@ export default function Structure({ onBack }) {
       name: 'Pengembangan Sumber Daya Mahasiswa (PSDM)',
       core: [
         { role: 'Kepala Departemen', name: '[Nama Kadep]', img: '' },
-        { role: 'Wakil Kepala Departemen', name: '[Nama Wakadep]', img: '' }
+        { role: 'Wakil Kepala Departemen', name: '[Nama Wakadep]', img: '' },
+        { role: 'Sekretaris Departemen', name: '[Nama Sekdep]', img: '' }
       ],
       bidang: [
         {
           name: 'Bidang Kaderisasi',
           members: [
-            { role: 'Kepala Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
             { role: 'Staff', name: '[Nama Staff]', img: '' },
             { role: 'Staff', name: '[Nama Staff]', img: '' },
           ]
         },
         {
-          name: 'Bidang Keilmuan',
+          name: 'Bidang Penelitian & Pengembangan',
           members: [
-            { role: 'Kepala Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
             { role: 'Staff', name: '[Nama Staff]', img: '' },
           ]
         }
@@ -112,6 +120,28 @@ export default function Structure({ onBack }) {
           name: 'Bidang Jurnalistik & Publikasi',
           members: [
             { role: 'Kepala Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+          ]
+        },
+        {
+          name: 'Bidang Kewirausahaan',
+          members: [
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+          ]
+        },
+        {
+          name: 'Bidang Seni & Olahraga',
+          members: [
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
             { role: 'Staff', name: '[Nama Staff]', img: '' },
           ]
         }

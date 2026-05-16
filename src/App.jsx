@@ -18,7 +18,7 @@ function App() {
       <main>
         {currentView === 'landing' ? (
           <>
-            <Hero />
+            <Hero onExplore={() => setCurrentView('structure')} />
             {/* Berikan fungsi ganti view ke komponen About/Hero */}
             <About onExplore={() => setCurrentView('structure')} />
             <Cabinet />

@@ -9,7 +9,7 @@ const IMAGES = [
   '/assets/program1.jpeg'
 ];
 
-export default function Hero() {
+export default function Hero({ onExplore }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -80,9 +80,9 @@ export default function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="./pages/Structure" className="bg-brand-500 hover:bg-brand-600 text-white px-8 py-3.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-brand-500/30 hover:-translate-y-1 text-center">
+              <button onClick={onExplore} className="bg-brand-500 hover:bg-brand-600 text-white px-8 py-3.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-brand-500/30 hover:-translate-y-1 text-center">
                 Kenali Lebih Lanjut
-              </a>
+              </button>
               <a href="#program" className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-700 px-8 py-3.5 rounded-full font-semibold transition-all hover:shadow-md text-center flex items-center justify-center gap-2">
                 <PlayCircle size={24} className="text-brand-500" /> Program Kerja
               </a>

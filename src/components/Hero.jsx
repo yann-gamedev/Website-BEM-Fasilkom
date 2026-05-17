@@ -9,14 +9,34 @@ const IMAGES = [
   '/assets/program1.jpeg'
 ];
 
+const CABINET_TITLE = 'KABINET AETHERION';
+
 export default function Hero({ onExplore, onViewAll }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [typedTitle, setTypedTitle] = useState('');
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % IMAGES.length);
     }, 5000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    let index = 0;
+    let pauseTimer;
+
+    const typeTitle = () => {
+      setTypedTitle(CABINET_TITLE.slice(0, index + 1));
+      index += 1;
+
+      if (index < CABINET_TITLE.length) {
+        pauseTimer = window.setTimeout(typeTitle, 90);
+      }
+    };
+
+    pauseTimer = window.setTimeout(typeTitle, 500);
+    return () => window.clearTimeout(pauseTimer);
   }, []);
 
   const variants = {
@@ -72,7 +92,15 @@ export default function Hero({ onExplore, onViewAll }) {
             
             <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
               BEM FASILKOM<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-400">KABINET AETHERION</span>
+              <span className="inline-flex min-h-[1.2em] items-baseline text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-400" aria-label={CABINET_TITLE}>
+                {typedTitle}
+                <motion.span
+                  aria-hidden="true"
+                  animate={{ opacity: [0, 1, 1, 0] }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                  className="ml-1 inline-block h-[0.85em] w-[0.08em] rounded-full bg-orange-400 align-baseline"
+                />
+              </span>
             </h2>
             
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">

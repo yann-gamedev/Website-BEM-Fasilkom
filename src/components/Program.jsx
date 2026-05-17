@@ -6,7 +6,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 }
 };
 
-export default function Program() {
+export default function Program({ onViewAll }) {
   const articles = [
     {
       id: 1,
@@ -50,14 +50,15 @@ export default function Program() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Program Terkini</h2>
           </motion.div>
           
-          <motion.a 
+          <motion.button
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeUp} transition={{ duration: 0.6, delay: 0.2 }}
-            href="#" 
+            type="button"
+            onClick={onViewAll}
             className="inline-flex items-center justify-center px-6 py-2.5 border-2 border-brand-500 text-brand-600 font-medium rounded-full hover:bg-brand-500 hover:text-white transition-all"
           >
             Lihat Semua Berita
-          </motion.a>
+          </motion.button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

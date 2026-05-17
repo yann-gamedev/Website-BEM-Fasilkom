@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CaretLeft, CaretDown, Users, Briefcase } from '@phosphor-icons/react';
+import { CaretLeft, CaretDown, Users, Briefcase, IdentificationBadge, SquaresFour } from '@phosphor-icons/react';
 
 // Komponen Photocard Reusable
 const Photocard = ({ role, name, img }) => (
-  <div className="flex flex-col items-center">
+  <div className="flex w-full flex-col items-center">
     <div className="w-full aspect-[3/4] bg-slate-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 relative group cursor-pointer">
       {/* Jika foto belum ada, akan menampilkan warna abu-abu. Jika sudah ada, akan merender gambar */}
       {img ? (
@@ -24,6 +24,25 @@ const Photocard = ({ role, name, img }) => (
       <h4 className="font-bold text-gray-900 leading-tight">{name}</h4>
       <p className="text-sm text-brand-600 font-medium">{role}</p>
     </div>
+  </div>
+);
+
+const PhotoGrid = ({ children }) => (
+  <div className="grid grid-cols-[repeat(auto-fit,minmax(9.5rem,12rem))] justify-center gap-6 md:gap-8">
+    {children}
+  </div>
+);
+
+const getMemberCount = (dept) => dept.core.length + dept.bidang.reduce((total, bidang) => total + bidang.members.length, 0);
+
+const SectionMeta = ({ items }) => (
+  <div className="mt-3 flex flex-wrap gap-2">
+    {items.map((item) => (
+      <span key={item.label} className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-slate-600 ring-1 ring-slate-200">
+        {item.icon}
+        {item.label}
+      </span>
+    ))}
   </div>
 );
 
@@ -224,13 +243,19 @@ export default function Structure({ onBack }) {
           <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
             <button 
               onClick={() => toggleSection('bph')}
-              className="w-full flex items-center justify-between p-6 bg-white hover:bg-slate-50 transition-colors"
+              className="w-full flex items-center justify-between gap-5 p-6 bg-gradient-to-r from-brand-50 to-white hover:from-brand-100/80 transition-colors"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex shrink-0 items-center justify-center">
                   <Users size={28} weight="fill" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 text-left">Badan Pengurus Harian (BPH)</h3>
+                <div className="text-left">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Badan Pengurus Harian (BPH)</h3>
+                  <SectionMeta items={[
+                    { label: `${bphMembers.length} Jabatan Inti`, icon: <IdentificationBadge size={14} weight="fill" /> },
+                    { label: 'Koordinasi Kabinet', icon: <SquaresFour size={14} weight="fill" /> }
+                  ]} />
+                </div>
               </div>
               <motion.div animate={{ rotate: openSection === 'bph' ? 180 : 0 }}>
                 <CaretDown size={24} className="text-gray-500" />
@@ -247,11 +272,11 @@ export default function Structure({ onBack }) {
                 >
                   <div className="p-6 md:p-8">
                     {/* Grid Photocard BPH */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    <PhotoGrid>
                       {bphMembers.map((member, idx) => (
                         <Photocard key={idx} {...member} />
                       ))}
-                    </div>
+                    </PhotoGrid>
                   </div>
                 </motion.div>
               )}
@@ -263,13 +288,20 @@ export default function Structure({ onBack }) {
             <div key={dept.id} className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
               <button 
                 onClick={() => toggleSection(dept.id)}
-                className="w-full flex items-center justify-between p-6 bg-white hover:bg-slate-50 transition-colors"
+                className="w-full flex items-center justify-between gap-5 p-6 bg-white hover:bg-slate-50 transition-colors"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-slate-100 text-slate-600 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-slate-100 text-slate-600 rounded-xl flex shrink-0 items-center justify-center">
                     <Briefcase size={28} weight="fill" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 text-left">{dept.name}</h3>
+                  <div className="text-left">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900">{dept.name}</h3>
+                    <SectionMeta items={[
+                      { label: `${dept.core.length} Core`, icon: <IdentificationBadge size={14} weight="fill" /> },
+                      { label: `${dept.bidang.length} Bidang`, icon: <SquaresFour size={14} weight="fill" /> },
+                      { label: `${getMemberCount(dept)} Formasi`, icon: <Users size={14} weight="fill" /> }
+                    ]} />
+                  </div>
                 </div>
                 <motion.div animate={{ rotate: openSection === dept.id ? 180 : 0 }}>
                   <CaretDown size={24} className="text-gray-500" />
@@ -288,11 +320,18 @@ export default function Structure({ onBack }) {
                       
                       {/* Kadep & Wakadep */}
                       <div className="mb-12">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 justify-center">
+                        <div className="mb-5 flex items-center justify-between gap-4 border-b border-slate-200 pb-3">
+                          <div>
+                            <p className="text-xs font-bold uppercase tracking-wider text-brand-600">Core Departemen</p>
+                            <h4 className="text-lg font-bold text-gray-900">Pimpinan dan Sekretariat</h4>
+                          </div>
+                          <span className="rounded-full bg-brand-50 px-3 py-1 text-sm font-semibold text-brand-700">{dept.core.length} orang</span>
+                        </div>
+                        <PhotoGrid>
                           {dept.core.map((member, idx) => (
                             <Photocard key={idx} {...member} />
                           ))}
-                        </div>
+                        </PhotoGrid>
                       </div>
 
                       {/* Per Bidang */}
@@ -302,11 +341,11 @@ export default function Structure({ onBack }) {
                             <h4 className="text-lg font-bold text-gray-800 border-l-4 border-brand-500 pl-3 mb-6">
                               {bidang.name}
                             </h4>
-                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                            <PhotoGrid>
                               {bidang.members.map((member, mIdx) => (
                                 <Photocard key={mIdx} {...member} />
                               ))}
-                            </div>
+                            </PhotoGrid>
                           </div>
                         ))}
                       </div>

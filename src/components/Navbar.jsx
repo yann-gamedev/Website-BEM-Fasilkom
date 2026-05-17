@@ -28,6 +28,11 @@ export default function Navbar({ onNavigate }) {
     { src: '/assets/bem.png', alt: 'Logo BEM', text: 'KABINET AETHERION', color: 'text-blue-600' }
   ];
 
+  const handleNavigate = (view, section) => {
+    onNavigate(view, section);
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'shadow-md bg-white/90 py-2 glass-nav' : 'bg-white/30 py-4 glass-nav'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,10 +60,10 @@ export default function Navbar({ onNavigate }) {
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#beranda" className="text-gray-600 hover:text-brand-500 font-medium nav-link">Beranda</a>
-            <button onClick={() => onNavigate('structure')} className="text-gray-600 hover:text-brand-500 font-medium nav-link cursor-pointer bg-none border-none">Tentang Kami</button>
-            <button onClick={() => onNavigate('structure')} className="text-gray-600 hover:text-brand-500 font-medium nav-link cursor-pointer bg-none border-none">Kabinet</button>
-            <a href="#program" className="text-gray-600 hover:text-brand-500 font-medium nav-link">Program</a>
+            <button type="button" onClick={() => handleNavigate('landing', 'beranda')} className="text-gray-600 hover:text-brand-500 font-medium nav-link cursor-pointer bg-transparent border-0 p-0">Beranda</button>
+            <button type="button" onClick={() => handleNavigate('landing', 'tentang')} className="text-gray-600 hover:text-brand-500 font-medium nav-link cursor-pointer bg-transparent border-0 p-0">Tentang Kami</button>
+            <button type="button" onClick={() => handleNavigate('structure')} className="text-gray-600 hover:text-brand-500 font-medium nav-link cursor-pointer bg-transparent border-0 p-0">Kabinet</button>
+            <button type="button" onClick={() => handleNavigate('landing', 'program')} className="text-gray-600 hover:text-brand-500 font-medium nav-link cursor-pointer bg-transparent border-0 p-0">Program</button>
           </nav>
 
           {/* CTA Button Desktop */}
@@ -87,13 +92,13 @@ export default function Navbar({ onNavigate }) {
             className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 absolute w-full top-full left-0 shadow-xl overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
-              <a href="#beranda" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Beranda</a>
-              <button onClick={() => { onNavigate('structure'); setMobileMenuOpen(false); }} className="w-full text-left block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg bg-none border-none">Tentang Kami</button>
-              <button onClick={() => { onNavigate('structure'); setMobileMenuOpen(false); }} className="w-full text-left block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg bg-none border-none">Kabinet</button>
-              <a href="#program" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Program</a>
-              <a href="#kontak" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-3 mt-4 text-center text-base font-medium bg-brand-500 text-white rounded-lg shadow-md">
+              <button type="button" onClick={() => handleNavigate('landing', 'beranda')} className="w-full text-left block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg bg-transparent border-0">Beranda</button>
+              <button type="button" onClick={() => handleNavigate('landing', 'tentang')} className="w-full text-left block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg bg-transparent border-0">Tentang Kami</button>
+              <button type="button" onClick={() => handleNavigate('structure')} className="w-full text-left block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg bg-transparent border-0">Kabinet</button>
+              <button type="button" onClick={() => handleNavigate('landing', 'program')} className="w-full text-left block px-3 py-3 text-base font-medium text-gray-800 hover:text-brand-500 hover:bg-brand-50 rounded-lg bg-transparent border-0">Program</button>
+              <button type="button" onClick={() => handleNavigate('landing', 'kontak')} className="w-full block px-3 py-3 mt-4 text-center text-base font-medium bg-brand-500 text-white rounded-lg shadow-md">
                 Hubungi Kami
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

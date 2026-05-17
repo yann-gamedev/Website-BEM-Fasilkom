@@ -60,17 +60,12 @@ export default function About() {
                 className="absolute inset-0 w-full h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 flex flex-col justify-center items-center overflow-auto"
                 style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
               >
-                <h4 className="text-xl font-bold text-brand-600 dark:text-brand-400 mb-4 border-b-2 border-brand-100 dark:border-brand-800 pb-2 w-full text-center">Badan Pengurus Harian</h4>
-                <div className="flex flex-col gap-3 w-full text-center text-gray-800 dark:text-gray-200">
-                  <div className="bg-brand-50 dark:bg-brand-900/30 py-2 px-4 rounded-xl font-semibold">Ketua Umum</div>
-                  <div className="bg-brand-50 dark:bg-brand-900/30 py-2 px-4 rounded-xl font-semibold">Wakil Ketua Umum</div>
-                  <div className="grid grid-cols-2 gap-3 mt-1">
-                    <div className="bg-gray-50 dark:bg-gray-700 py-2 px-2 rounded-xl font-medium text-sm border border-gray-100 dark:border-gray-600">Sekretaris 1</div>
-                    <div className="bg-gray-50 dark:bg-gray-700 py-2 px-2 rounded-xl font-medium text-sm border border-gray-100 dark:border-gray-600">Sekretaris 2</div>
-                    <div className="bg-gray-50 dark:bg-gray-700 py-2 px-2 rounded-xl font-medium text-sm border border-gray-100 dark:border-gray-600">Bendahara 1</div>
-                    <div className="bg-gray-50 dark:bg-gray-700 py-2 px-2 rounded-xl font-medium text-sm border border-gray-100 dark:border-gray-600">Bendahara 2</div>
-                  </div>
-                </div>
+                <h4 className="text-xl font-bold text-brand-600 dark:text-brand-400 mb-4 border-b-2 border-brand-100 dark:border-brand-800 pb-2 w-full text-center">Makna Logo</h4>
+                  <div className="order-2 md:order-1">
+                      <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed bg-brand-50 dark:bg-brand-900/20 p-6 rounded-2xl border-l-4 border-brand-500">
+                      "Mewujudkan BEM Fasilkom UPN Jatim sebagai poros pergerakan mahasiswa yang adaptif, inovatif, dan sinergis dalam menciptakan lingkungan kampus yang prestatif dan inklusif."
+                      </p>
+                </div>                
               </div>
             </motion.div>
           </div>

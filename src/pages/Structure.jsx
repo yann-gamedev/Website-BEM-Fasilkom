@@ -76,52 +76,6 @@ export default function Structure({ onBack }) {
             { role: 'Staff', name: '[Nama Staff]', img: '' },
             { role: 'Staff', name: '[Nama Staff]', img: '' },
           ]
-        }
-      ]
-    },
-    {
-      id: 'sospol',
-      name: 'Departemen Sosial dan Politik (Sospol)',
-      core: [
-        { role: 'Kepala Departemen', name: '[Nama Kadep]', img: '' },
-      ],
-      bidang: [
-        {
-          name: 'Bidang Kesejahteraan Mahasiswa',
-          members: [
-            { role: 'Kepala Bidang', name: '[Nama Kabid]', img: '' },
-            { role: 'Staff', name: '[Nama Staff]', img: '' },
-          ]
-        },
-        {
-          name: 'Bidang Kajian Aksi Strategis',
-          members: [
-            { role: 'Kepala Bidang', name: '[Nama Kabid]', img: '' },
-            { role: 'Staff', name: '[Nama Staff]', img: '' },
-          ]
-        }
-      ]
-    },
-    {
-      id: 'medfo',
-      name: 'Biro Media dan Informasi',
-      core: [
-        { role: 'Kepala Biro', name: '[Nama Kabiro]', img: '' },
-      ],
-      bidang: [
-        {
-          name: 'Bidang Desain Kreatif',
-          members: [
-            { role: 'Kepala Bidang', name: '[Nama Kabid]', img: '' },
-            { role: 'Staff', name: '[Nama Staff]', img: '' },
-          ]
-        },
-        {
-          name: 'Bidang Jurnalistik & Publikasi',
-          members: [
-            { role: 'Kepala Bidang', name: '[Nama Kabid]', img: '' },
-            { role: 'Staff', name: '[Nama Staff]', img: '' },
-          ]
         },
         {
           name: 'Bidang Kewirausahaan',
@@ -148,23 +102,97 @@ export default function Structure({ onBack }) {
       ]
     },
     {
-      id: 'hdk',
-      name: 'Departemen Hubungan dan Kerja Sama',
+      id: 'sospol',
+      name: 'Departemen Sosial dan Politik (Sospol)',
       core: [
         { role: 'Kepala Departemen', name: '[Nama Kadep]', img: '' },
       ],
       bidang: [
         {
-          name: 'Bidang Relasi Eksternal',
+          name: 'Bidang Advokasi & Kesejahteraan Mahasiswa',
           members: [
-            { role: 'Kepala Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
             { role: 'Staff', name: '[Nama Staff]', img: '' },
           ]
         },
         {
-          name: 'Bidang Kemitraan & Sponsorship',
+          name: 'Bidang Pengabdian Masyarakat',
           members: [
-            { role: 'Kepala Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+          ]
+        }
+      ]
+    },
+    {
+      id: 'medfo',
+      name: 'Biro Media dan Informasi',
+      core: [
+        { role: 'Kepala Biro', name: '[Nama Kabiro]', img: '' },
+        { role: 'Wakil Kepala Biro', name: '[Nama Wakabiro]', img: '' },
+        { role: 'Sekretaris Biro', name: '[Nama Sekbiro]', img: '' },
+      ],
+      bidang: [
+        {
+          name: 'Bidang Multimedia',
+          members: [
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+          ]
+        },
+        {
+          name: 'Bidang Publikasi & Informasi',
+          members: [
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+          ]
+        }
+      ]
+    },
+    {
+      id: 'hdk',
+      name: 'Departemen Hubungan dan Kerja Sama',
+      core: [
+        { role: 'Kepala Departemen', name: '[Nama Kadep]', img: '' },
+        { role: 'Wakil Kepala Departemen', name: '[Nama Wakadep]', img: '' },
+        { role: 'Sekretaris Departemen', name: '[Nama Sekdep]', img: '' },
+      ],
+      bidang: [
+        {
+          name: 'Bidang Dalam Negeri',
+          members: [
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+          ]
+        },
+        {
+          name: 'Bidang Luar Negeri',
+          members: [
+            { role: 'Ketua Bidang', name: '[Nama Kabid]', img: '' },
+            { role: 'Wakil Ketua Bidang', name: '[Nama Wakabid]', img: '' },
+            { role: 'Sekretaris Bidang', name: '[Nama Sekbid]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
+            { role: 'Staff', name: '[Nama Staff]', img: '' },
             { role: 'Staff', name: '[Nama Staff]', img: '' },
           ]
         }

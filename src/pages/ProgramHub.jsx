@@ -4,9 +4,9 @@ import { CaretLeft, CaretDown, CalendarBlank, MapPin, IdentificationCard, Code }
 
 // Aset gambar untuk Hero Slider halaman program
 const SLIDER_IMAGES = [
-  '/assets/program1.jpeg',
+  '/assets/gedungbem.jpg',
   '/assets/program2.jpeg',
-  '/assets/kabinet.jpg'
+  '/assets/fasilkom.png'
 ];
 
 export default function ProgramHub({ onBack }) {

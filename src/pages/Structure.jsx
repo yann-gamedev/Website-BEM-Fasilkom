@@ -125,6 +125,8 @@ export default function Structure({ onBack }) {
       name: 'Departemen Sosial dan Politik (Sospol)',
       core: [
         { role: 'Kepala Departemen', name: '[Nama Kadep]', img: '' },
+        { role: 'Wakil Kepala Departemen', name: '[Nama Wakadep]', img: '' },
+        { role: 'Sekretaris Departemen', name: '[Nama Sekdep]', img: '' },
       ],
       bidang: [
         {

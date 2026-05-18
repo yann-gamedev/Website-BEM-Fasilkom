@@ -97,19 +97,26 @@ export default function ProgramHub({ onBack }) {
 
         {/* Konten Di Atas Hero */}
         <div className="absolute inset-0 flex flex-col justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 z-10">
-          <button 
+          <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
             onClick={onBack}
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white font-medium bg-white/10 backdrop-blur-md px-4 py-2 rounded-full w-fit transition-all border border-white/10 cursor-pointer"
+            className="inline-flex items-center gap-2 text-white/80 hover:text-white font-medium bg-white/10 backdrop-blur-md px-4 py-2 rounded-full w-fit transition-all border border-white/10 cursor-pointer hover:bg-white/20"
           >
             <CaretLeft weight="bold" /> Kembali ke Beranda
-          </button>
+          </motion.button>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <span className="text-brand-400 font-bold tracking-widest uppercase text-xs md:text-sm block mb-2">Eksplorasi Aktivitas</span>
             <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight max-w-3xl drop-shadow-sm">
               Pusat Program Kerja & Agenda Kreatif
             </h1>
-          </div>
+          </motion.div>
         </div>
       </div>
 

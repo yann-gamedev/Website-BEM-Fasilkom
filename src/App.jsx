@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,7 +7,7 @@ import Cabinet from './components/Cabinet';
 import Program from './components/Program';
 import Footer from './components/Footer';
 import MapSection from './components/MapSection';
-import Structure from './pages/Structure'; 
+import Structure from './pages/Structure';
 import ProgramHub from './pages/ProgramHub'; 
 
 const scrollToTop = () => {
@@ -50,23 +51,33 @@ function App() {
   return (
     <div className="font-sans text-gray-800 bg-slate-50 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
       {/* Oper fungsi navigasi ke navbar untuk tombol beranda */}
-      <Navbar onNavigate={navigateTo} />
+      <Navbar onNavigate={navigateTo} currentView={currentView} />
 
       <main>
-        {currentView === 'landing' ? (
-          <>
-            <Hero onExplore={() => navigateTo('structure')} onViewAll={() => navigateTo('programs')} />
-            {/* Navigasi dari tombol di seksi About */}
-            <About onExplore={() => navigateTo('structure')} />
-            <Cabinet />
-            {/* Jika ada tombol eksplorasi di komponen seksi Program bawaan, bisa ditaruh di sini */}
-            <Program onViewAll={() => navigateTo('programs')} />
-          </>
-        ) : currentView === 'structure' ? (
-          <Structure onBack={() => navigateTo('landing', 'beranda')} />
-        ) : (
-          <ProgramHub onBack={() => navigateTo('landing', 'program')} />
-        )}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentView}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {currentView === 'landing' ? (
+              <>
+                <Hero onExplore={() => navigateTo('structure')} onViewAll={() => navigateTo('programs')} />
+                {/* Navigasi dari tombol di seksi About */}
+                <About onExplore={() => navigateTo('structure')} />
+                <Cabinet />
+                {/* Jika ada tombol eksplorasi di komponen seksi Program bawaan, bisa ditaruh di sini */}
+                <Program onViewAll={() => navigateTo('programs')} />
+              </>
+            ) : currentView === 'structure' ? (
+              <Structure onBack={() => navigateTo('landing', 'beranda')} />
+            ) : (
+              <ProgramHub onBack={() => navigateTo('landing', 'program')} />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </main>
       
       <MapSection />

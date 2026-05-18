@@ -224,17 +224,36 @@ export default function Structure({ onBack }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Tombol Kembali */}
-        <button 
+        <button
           onClick={onBack}
-          className="flex items-center gap-2 text-brand-600 font-semibold mb-8 hover:gap-3 transition-all cursor-pointer"
+          className="inline-flex items-center gap-2 text-brand-600 font-semibold mb-8 hover:gap-3 transition-all cursor-pointer bg-brand-50/60 hover:bg-brand-100 px-4 py-2.5 rounded-full"
         >
-          <CaretLeft weight="bold" /> Kembali ke Beranda
+          <CaretLeft weight="bold" size={20} /> Kembali ke Beranda
         </button>
 
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Struktur Kabinet</h2>
-          <div className="w-24 h-1.5 bg-brand-500 mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">Kenali formasi lengkap pengurus BEM Fasilkom UPN "Veteran" Jawa Timur.</p>
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+          >
+            Struktur Kabinet
+          </motion.h2>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-24 h-1.5 bg-gradient-to-r from-brand-500 to-brand-600 mx-auto rounded-full mb-6 origin-center"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-gray-600 max-w-2xl mx-auto"
+          >
+            Kenali formasi lengkap pengurus BEM Fasilkom UPN "Veteran" Jawa Timur.
+          </motion.p>
         </div>
 
         <div className="max-w-5xl mx-auto space-y-6">

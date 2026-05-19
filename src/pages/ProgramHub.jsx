@@ -30,19 +30,19 @@ export default function ProgramHub({ onBack }) {
         {
           id: 'bem-1',
           title: 'Fasilkom Fest',
-          sub: 'Biro Media, Informasi & Kreatif',
+          sub: 'Bidang Seni dan Olahraga',
           date: 'Oktober 2026',
-          location: 'Gedung Serbaguna Girisantika',
+          location: 'Gedung Serbaguna Giriloka',
           shortDesc: 'Festival akbar tahunan Fakultas Ilmu Komputer yang mempertemukan seni, budaya, dan kompetisi teknologi.',
           longDesc: 'Fasilkom Fest merupakan puncak selebrasi kreativitas mahasiswa. Program ini mewadahi perlombaan skala regional, pameran karya inovasi teknologi dari seluruh jurusan, serta panggung apresiasi seni guna mempererat hubungan internal maupun eksternal fakultas.'
         },
         {
           id: 'bem-2',
-          title: 'R&D Tech Innovation Talk',
-          sub: 'Divisi Penelitian dan Pengembangan (Litbang)',
+          title: 'FASTERA',
+          sub: 'Bidang Penelitian dan Pengembangan (Litbang)',
           date: 'Agustus 2026',
-          location: 'Laboratorium Komputer Terpadu',
-          shortDesc: 'Forum diskusi dan diseminasi hasil riset teknologi mutakhir serta pengembangan aplikasi web/mobile.',
+          location: 'Online via Zoom',
+          shortDesc: 'Webinar dan Bootcamp intensif yang dirancang sedemikian rupda untuk memberikan mahasiswa pengetahuan dan keahlian tambahan agar bisa memperkaya diri dan portofolio.',
           longDesc: 'Program kerja berkala yang berfokus pada eksplorasi teknologi terbarukan, manajemen pangkalan data local server, logika sistem layanan, hingga bedah alur arsitektur sistem. Dirancang untuk meningkatkan iklim akademis dan standar riset solutif di lingkungan mahasiswa.'
         }
       ]

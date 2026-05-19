@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -25,7 +25,8 @@ const scrollToSection = (sectionId) => {
   }, 100);
 };
 
-function LandingPage({ navigate }) {
+function LandingPage() {
+  const navigate = useNavigate();
   return (
     <>
       <Hero
@@ -39,23 +40,36 @@ function LandingPage({ navigate }) {
   );
 }
 
+function NotFound() {
+  const navigate = useNavigate();
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 px-4">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center"
+      >
+        <h1 className="text-6xl font-bold text-brand-600 mb-4">404</h1>
+        <p className="text-2xl font-semibold text-gray-900 mb-2">Halaman Tidak Ditemukan</p>
+        <p className="text-gray-600 mb-8">Maaf, halaman yang Anda cari tidak ada.</p>
+        <button
+          onClick={() => { navigate('/'); scrollToTop(); }}
+          className="px-6 py-3 bg-brand-600 text-white rounded-lg font-semibold hover:bg-brand-700 transition-colors"
+        >
+          Kembali ke Beranda
+        </button>
+      </motion.div>
+    </div>
+  );
+}
+
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [currentView, setCurrentView] = useState('landing');
 
   useEffect(() => {
     scrollToTop();
-  }, [location]);
-
-  useEffect(() => {
-    if (location.pathname === '/') {
-      setCurrentView('landing');
-    } else if (location.pathname === '/kabinet') {
-      setCurrentView('structure');
-    } else if (location.pathname === '/program') {
-      setCurrentView('programs');
-    }
   }, [location.pathname]);
 
   const handleNavigation = (view, section) => {
@@ -71,9 +85,14 @@ function App() {
     }
   };
 
+  const handleBackToHome = () => {
+    navigate('/');
+    scrollToTop();
+  };
+
   return (
     <div className="font-sans text-gray-800 bg-slate-50 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
-      <Navbar onNavigate={handleNavigation} currentView={currentView} />
+      <Navbar onNavigate={handleNavigation} currentPath={location.pathname} />
 
       <main>
         <AnimatePresence mode="wait">
@@ -85,9 +104,10 @@ function App() {
             transition={{ duration: 0.3 }}
           >
             <Routes>
-              <Route path="/" element={<LandingPage navigate={navigate} />} />
-              <Route path="/kabinet" element={<Structure />} />
-              <Route path="/program" element={<ProgramHub />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/kabinet" element={<Structure onBack={handleBackToHome} />} />
+              <Route path="/program" element={<ProgramHub onBack={handleBackToHome} />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </motion.div>
         </AnimatePresence>

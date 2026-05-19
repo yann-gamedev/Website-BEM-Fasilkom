@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { List, X, ArrowRight } from '@phosphor-icons/react';
 
-export default function Navbar({ onNavigate, currentView }) {
+export default function Navbar({ onNavigate, currentPath }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [logoChoice, setLogoChoice] = useState(0); // 0 or 1
+  const [logoChoice, setLogoChoice] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,7 +15,6 @@ export default function Navbar({ onNavigate, currentView }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Alternate logo every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setLogoChoice((prev) => (prev === 0 ? 1 : 0));
@@ -33,15 +32,19 @@ export default function Navbar({ onNavigate, currentView }) {
     setMobileMenuOpen(false);
   };
 
-  const isLinkActive = (view, section) => {
+  const isLinkActive = (view) => {
     if (view === 'landing') {
-      return currentView === 'landing';
+      return currentPath === '/';
+    } else if (view === 'structure') {
+      return currentPath === '/kabinet';
+    } else if (view === 'programs') {
+      return currentPath === '/program';
     }
-    return currentView === view;
+    return false;
   };
 
-  const getLinkClassName = (view, section) => {
-    const isActive = isLinkActive(view, section);
+  const getLinkClassName = (view) => {
+    const isActive = isLinkActive(view);
     const baseClass = "text-gray-600 hover:text-brand-500 font-medium nav-link cursor-pointer bg-transparent border-0 p-0 transition-colors duration-200";
     return isActive ? `${baseClass} text-brand-600 font-semibold` : baseClass;
   };
@@ -73,8 +76,8 @@ export default function Navbar({ onNavigate, currentView }) {
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8">
-            <button type="button" onClick={() => handleNavigate('landing', 'beranda')} className={getLinkClassName('landing', 'beranda')}>Beranda</button>
-            <button type="button" onClick={() => handleNavigate('landing', 'tentang')} className={getLinkClassName('landing', 'tentang')}>Tentang Kami</button>
+            <button type="button" onClick={() => handleNavigate('landing', 'beranda')} className={getLinkClassName('landing')}>Beranda</button>
+            <button type="button" onClick={() => handleNavigate('landing', 'tentang')} className={getLinkClassName('landing')}>Tentang Kami</button>
             <button type="button" onClick={() => handleNavigate('structure')} className={getLinkClassName('structure')}>Kabinet</button>
             <button type="button" onClick={() => handleNavigate('programs')} className={getLinkClassName('programs')}>Program</button>
           </nav>
@@ -105,8 +108,8 @@ export default function Navbar({ onNavigate, currentView }) {
             className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 absolute w-full top-full left-0 shadow-xl overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
-              <button type="button" onClick={() => handleNavigate('landing', 'beranda')} className={`w-full text-left block px-3 py-3 text-base font-medium rounded-lg bg-transparent border-0 transition-colors duration-200 ${isLinkActive('landing', 'beranda') ? 'text-brand-600 bg-brand-50 font-semibold' : 'text-gray-800 hover:text-brand-500 hover:bg-brand-50'}`}>Beranda</button>
-              <button type="button" onClick={() => handleNavigate('landing', 'tentang')} className={`w-full text-left block px-3 py-3 text-base font-medium rounded-lg bg-transparent border-0 transition-colors duration-200 ${isLinkActive('landing', 'tentang') ? 'text-brand-600 bg-brand-50 font-semibold' : 'text-gray-800 hover:text-brand-500 hover:bg-brand-50'}`}>Tentang Kami</button>
+              <button type="button" onClick={() => handleNavigate('landing', 'beranda')} className={`w-full text-left block px-3 py-3 text-base font-medium rounded-lg bg-transparent border-0 transition-colors duration-200 ${isLinkActive('landing') ? 'text-brand-600 bg-brand-50 font-semibold' : 'text-gray-800 hover:text-brand-500 hover:bg-brand-50'}`}>Beranda</button>
+              <button type="button" onClick={() => handleNavigate('landing', 'tentang')} className={`w-full text-left block px-3 py-3 text-base font-medium rounded-lg bg-transparent border-0 transition-colors duration-200 ${isLinkActive('landing') ? 'text-brand-600 bg-brand-50 font-semibold' : 'text-gray-800 hover:text-brand-500 hover:bg-brand-50'}`}>Tentang Kami</button>
               <button type="button" onClick={() => handleNavigate('structure')} className={`w-full text-left block px-3 py-3 text-base font-medium rounded-lg bg-transparent border-0 transition-colors duration-200 ${isLinkActive('structure') ? 'text-brand-600 bg-brand-50 font-semibold' : 'text-gray-800 hover:text-brand-500 hover:bg-brand-50'}`}>Kabinet</button>
               <button type="button" onClick={() => handleNavigate('programs')} className={`w-full text-left block px-3 py-3 text-base font-medium rounded-lg bg-transparent border-0 transition-colors duration-200 ${isLinkActive('programs') ? 'text-brand-600 bg-brand-50 font-semibold' : 'text-gray-800 hover:text-brand-500 hover:bg-brand-50'}`}>Program</button>
               <button type="button" onClick={() => handleNavigate('landing', 'kontak')} className="w-full block px-3 py-3 mt-4 text-center text-base font-medium bg-brand-500 text-white rounded-lg shadow-md hover:bg-brand-600 transition-colors duration-200">

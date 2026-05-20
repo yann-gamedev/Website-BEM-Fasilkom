@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 UPDATE.md
+.agents/skills/apa
 
 # Editor directories and files
 .vscode/*

@@ -50,7 +50,7 @@ export default function Navbar({ onNavigate, currentPath }) {
   };
 
   return (
-    <header className={`fixed z-50 transition-all duration-500 ease-out left-1/2 -translate-x-1/2 bg-white/75 backdrop-blur-md rounded-full shadow-lg ${
+    <header className={`fixed z-50 transition-all duration-500 ease-in-out left-1/2 -translate-x-1/2 bg-white/75 backdrop-blur-md rounded-full shadow-lg ${
       isScrolled
         ? 'top-4 py-3 max-w-6xl scale-95'
         : 'top-6 py-4 w-[96%] max-w-7xl scale-100'

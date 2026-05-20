@@ -50,10 +50,12 @@ export default function Navbar({ onNavigate, currentPath }) {
   };
 
   return (
-    <header className={`fixed z-50 transition-all duration-300 ease-in-out left-1/2 -translate-x-1/2 max-w-5xl bg-white/75 backdrop-blur-md rounded-full shadow-lg ${
-      isScrolled ? 'top-4 py-3' : 'top-6 py-4'
+    <header className={`fixed z-50 transition-all duration-500 ease-out left-1/2 -translate-x-1/2 bg-white/75 backdrop-blur-md rounded-full shadow-lg ${
+      isScrolled
+        ? 'top-4 py-3 max-w-6xl scale-95'
+        : 'top-6 py-4 w-[96%] max-w-7xl scale-100'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
 
           {/* Logo with Animation */}
@@ -77,7 +79,7 @@ export default function Navbar({ onNavigate, currentPath }) {
           </div>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-12">
             <button type="button" onClick={() => handleNavigate('landing', 'beranda')} className={getLinkClassName('landing')}>Beranda</button>
             <button type="button" onClick={() => handleNavigate('landing', 'tentang')} className={getLinkClassName('landing')}>Tentang Kami</button>
             <button type="button" onClick={() => handleNavigate('structure')} className={getLinkClassName('structure')}>Kabinet</button>
@@ -85,7 +87,7 @@ export default function Navbar({ onNavigate, currentPath }) {
           </nav>
 
           {/* CTA Button Desktop */}
-          <div className="hidden md:block">
+          <div className="hidden md:block ml-4">
             <a href="https://bemfasilkomupnvjt.carrd.co/" className="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-xl hover:shadow-brand-500/20 hover:-translate-y-0.5 inline-flex items-center gap-2">
               Hubungi Kami <ArrowRight weight="bold" />
             </a>

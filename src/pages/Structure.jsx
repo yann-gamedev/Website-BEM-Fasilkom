@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CaretLeft, CaretDown, Users, Briefcase, IdentificationBadge, SquaresFour } from '@phosphor-icons/react';
+import { CaretLeft, Users, Briefcase, IdentificationBadge, SquaresFour } from '@phosphor-icons/react';
 
 // Komponen Photocard Reusable
 const Photocard = ({ role, name, img }) => (
@@ -47,12 +46,6 @@ const SectionMeta = ({ items }) => (
 );
 
 export default function Structure({ onBack }) {
-  // State untuk mengontrol dropdown mana yang terbuka
-  const [openSection, setOpenSection] = useState('bph'); // Default BPH terbuka
-
-  const toggleSection = (section) => {
-    setOpenSection(openSection === section ? null : section);
-  };
 
   // Data Struktur Organisasi
   const bphMembers = [
@@ -262,11 +255,8 @@ export default function Structure({ onBack }) {
           
           {/* ================= SECTION BPH ================= */}
           <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-            <button 
-              onClick={() => toggleSection('bph')}
-              className="w-full flex items-center justify-between gap-5 p-6 bg-gradient-to-r from-brand-50 to-white hover:from-brand-100/80 transition-colors"
-            >
-              <div className="flex items-center gap-4">
+            <div className="p-6 bg-gradient-to-r from-brand-50 to-white">
+              <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex shrink-0 items-center justify-center">
                   <Users size={28} weight="fill" />
                 </div>
@@ -278,40 +268,23 @@ export default function Structure({ onBack }) {
                   ]} />
                 </div>
               </div>
-              <motion.div animate={{ rotate: openSection === 'bph' ? 180 : 0 }}>
-                <CaretDown size={24} className="text-gray-500" />
-              </motion.div>
-            </button>
+            </div>
 
-            <AnimatePresence>
-              {openSection === 'bph' && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  className="overflow-hidden border-t border-gray-100"
-                >
-                  <div className="p-6 md:p-8">
-                    {/* Grid Photocard BPH */}
-                    <PhotoGrid>
-                      {bphMembers.map((member, idx) => (
-                        <Photocard key={idx} {...member} />
-                      ))}
-                    </PhotoGrid>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div className="p-6 md:p-8 border-t border-gray-100">
+              {/* Grid Photocard BPH */}
+              <PhotoGrid>
+                {bphMembers.map((member, idx) => (
+                  <Photocard key={idx} {...member} />
+                ))}
+              </PhotoGrid>
+            </div>
           </div>
 
           {/* ================= SECTION DEPARTEMEN ================= */}
           {departments.map((dept) => (
             <div key={dept.id} className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-              <button 
-                onClick={() => toggleSection(dept.id)}
-                className="w-full flex items-center justify-between gap-5 p-6 bg-white hover:bg-slate-50 transition-colors"
-              >
-                <div className="flex items-center gap-4">
+              <div className="p-6 bg-white">
+                <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 bg-slate-100 text-slate-600 rounded-xl flex shrink-0 items-center justify-center">
                     <Briefcase size={28} weight="fill" />
                   </div>
@@ -324,57 +297,41 @@ export default function Structure({ onBack }) {
                     ]} />
                   </div>
                 </div>
-                <motion.div animate={{ rotate: openSection === dept.id ? 180 : 0 }}>
-                  <CaretDown size={24} className="text-gray-500" />
-                </motion.div>
-              </button>
+              </div>
 
-              <AnimatePresence>
-                {openSection === dept.id && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="overflow-hidden border-t border-gray-100"
-                  >
-                    <div className="p-6 md:p-8 bg-slate-50/50">
-                      
-                      {/* Kadep & Wakadep */}
-                      <div className="mb-12">
-                        <div className="mb-5 flex items-center justify-between gap-4 border-b border-slate-200 pb-3">
-                          <div>
-                            <p className="text-xs font-bold uppercase tracking-wider text-brand-600">Core Departemen</p>
-                            <h4 className="text-lg font-bold text-gray-900">Pimpinan dan Sekretariat</h4>
-                          </div>
-                          <span className="rounded-full bg-brand-50 px-3 py-1 text-sm font-semibold text-brand-700">{dept.core.length} orang</span>
-                        </div>
-                        <PhotoGrid>
-                          {dept.core.map((member, idx) => (
-                            <Photocard key={idx} {...member} />
-                          ))}
-                        </PhotoGrid>
-                      </div>
-
-                      {/* Per Bidang */}
-                      <div className="space-y-10">
-                        {dept.bidang.map((bidang, idx) => (
-                          <div key={idx}>
-                            <h4 className="text-lg font-bold text-gray-800 border-l-4 border-brand-500 pl-3 mb-6">
-                              {bidang.name}
-                            </h4>
-                            <PhotoGrid>
-                              {bidang.members.map((member, mIdx) => (
-                                <Photocard key={mIdx} {...member} />
-                              ))}
-                            </PhotoGrid>
-                          </div>
-                        ))}
-                      </div>
-
+              <div className="p-6 md:p-8 bg-slate-50/50 border-t border-gray-100">
+                {/* Kadep & Wakadep */}
+                <div className="mb-12">
+                  <div className="mb-5 flex items-center justify-between gap-4 border-b border-slate-200 pb-3">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-brand-600">Core Departemen</p>
+                      <h4 className="text-lg font-bold text-gray-900">Pimpinan dan Sekretariat</h4>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    <span className="rounded-full bg-brand-50 px-3 py-1 text-sm font-semibold text-brand-700">{dept.core.length} orang</span>
+                  </div>
+                  <PhotoGrid>
+                    {dept.core.map((member, idx) => (
+                      <Photocard key={idx} {...member} />
+                    ))}
+                  </PhotoGrid>
+                </div>
+
+                {/* Per Bidang */}
+                <div className="space-y-10">
+                  {dept.bidang.map((bidang, idx) => (
+                    <div key={idx}>
+                      <h4 className="text-lg font-bold text-gray-800 border-l-4 border-brand-500 pl-3 mb-6">
+                        {bidang.name}
+                      </h4>
+                      <PhotoGrid>
+                        {bidang.members.map((member, mIdx) => (
+                          <Photocard key={mIdx} {...member} />
+                        ))}
+                      </PhotoGrid>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
 

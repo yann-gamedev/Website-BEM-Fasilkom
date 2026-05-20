@@ -50,7 +50,7 @@ export default function Navbar({ onNavigate, currentPath }) {
   };
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'shadow-md bg-white/90 py-2 glass-nav' : 'bg-white/30 py-4 glass-nav'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 glass-nav ${isScrolled ? 'shadow-md bg-white/90 py-2' : 'bg-white/10 py-4'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
 

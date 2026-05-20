@@ -50,7 +50,9 @@ export default function Navbar({ onNavigate, currentPath }) {
   };
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 glass-nav ${isScrolled ? 'shadow-md bg-white/90 py-2' : 'bg-white/10 py-4'}`}>
+    <header className={`fixed z-50 transition-all duration-300 ease-in-out left-1/2 -translate-x-1/2 max-w-5xl bg-white/75 backdrop-blur-md rounded-full shadow-lg ${
+      isScrolled ? 'top-4 py-3' : 'top-6 py-4'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
 
@@ -105,7 +107,7 @@ export default function Navbar({ onNavigate, currentPath }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 absolute w-full top-full left-0 shadow-xl overflow-hidden"
+            className="md:hidden absolute w-full top-full left-0 overflow-hidden bg-white/75 backdrop-blur-md rounded-b-3xl shadow-lg transition-all duration-300"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
               <button type="button" onClick={() => handleNavigate('landing', 'beranda')} className={`w-full text-left block px-3 py-3 text-base font-medium rounded-lg bg-transparent border-0 transition-colors duration-200 ${isLinkActive('landing') ? 'text-brand-600 bg-brand-50 font-semibold' : 'text-gray-800 hover:text-brand-500 hover:bg-brand-50'}`}>Beranda</button>

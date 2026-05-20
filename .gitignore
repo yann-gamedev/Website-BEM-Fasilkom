@@ -13,6 +13,10 @@ dist-ssr
 *.local
 UPDATE.md
 .agents
+UI.md
+SKILL.md
+*.env
+*.env.local
 
 # Editor directories and files
 .vscode/*
